@@ -40,6 +40,8 @@ set laststatus=2
 " ステータス業を常に表示
 set tabstop=4
 " タブ文字が占める幅（空白文字の数ではない）
+set noexpandtab
+" タブにはタブを
 colorscheme hybrid
 " カラースキーム設定
 set bg=dark
@@ -104,13 +106,17 @@ let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = ''
 
 " QuickRun 実行結果を下に出す
-let g:quickrun_config={'*': {'split': ''}}
-set splitbelow
+" let g:quickrun_config={'*': {'split': ''}}
+" set splitbelow
 
-augroup fileTypeIndent
-    autocmd!
-    autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
-	" Pythonコードならタブ入力時に空白四つ挿入
-    autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
-	" Rubyコードならタブ入力時に空白二つ挿入
-augroup END
+" QuickRun 実行結果を右に出す
+let g:quickrun_config={'*': {'split': 'vertical'}}
+set splitright
+
+" augroup fileTypeIndent
+"     autocmd!
+"     autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
+" 	" Pythonコードならタブ入力時に空白四つ挿入
+"     autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
+" 	" Rubyコードならタブ入力時に空白二つ挿入
+" augroup END
