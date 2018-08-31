@@ -61,7 +61,7 @@ syntax on
 " 以下、キーマッピング設定リスト
 nmap <C-t> :NERDTreeToggle<CR>
 " NERDTree起動
-nmap <C-r> :QuickRun<CR>
+nmap <C-5> :QuickRun<CR>
 " PythonをQuickRun
 
 " Powerline系フォントを利用する
