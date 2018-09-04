@@ -54,14 +54,14 @@ set list
 set listchars=tab:»-,trail:-,nbsp:%,eol:↲
 " 不可視文字の具現化記号を設定
 
-autocmd vimenter * NERDTree
+"autocmd vimenter * NERDTree
 " NERDTreeを起動時に有効化
 syntax on
 
 " 以下、キーマッピング設定リスト
 nmap <C-t> :NERDTreeToggle<CR>
 " NERDTree起動
-nmap <C-5> :QuickRun<CR>
+nmap <Space>r :QuickRun<CR>
 " PythonをQuickRun
 
 " Powerline系フォントを利用する
@@ -106,12 +106,12 @@ let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = ''
 
 " QuickRun 実行結果を下に出す
-" let g:quickrun_config={'*': {'split': ''}}
-" set splitbelow
+ let g:quickrun_config={'*': {'split': ''}}
+ set splitbelow
 
 " QuickRun 実行結果を右に出す
-let g:quickrun_config={'*': {'split': 'vertical'}}
-set splitright
+"let g:quickrun_config={'*': {'split': 'vertical'}}
+"set splitright
 
 " augroup fileTypeIndent
 "     autocmd!
