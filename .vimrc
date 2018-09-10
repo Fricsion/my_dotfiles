@@ -53,6 +53,8 @@ set list
 " 不可視文字を具現化
 set listchars=tab:»-,trail:-,nbsp:%,eol:↲
 " 不可視文字の具現化記号を設定
+set clipboard+=unnamed
+" クリップボードをmacOSと共有
 set foldcolumn=3
 set foldmethod=indent
 " 折りたたみ設定
