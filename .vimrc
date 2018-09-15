@@ -12,6 +12,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 
+Plugin 'Lokaltog/powerline'
+
 Plugin 'thinca/vim-quickrun'
 
 Plugin 'vim-airline/vim-airline'
@@ -40,6 +42,8 @@ set laststatus=2
 " ステータス業を常に表示
 set tabstop=4
 " タブ文字が占める幅（空白文字の数ではない）
+set shiftwidth=4
+" 自動インデントで生じさせる幅
 set noexpandtab
 " タブにはタブを
 colorscheme hybrid
