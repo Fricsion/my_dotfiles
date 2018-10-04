@@ -74,6 +74,9 @@ nmap <C-t> :NERDTreeToggle<CR>
 nmap <Space>r :QuickRun<CR>
 " PythonをQuickRun
 
+let g:NERDSpaceDelims=1
+" NERDCommentでコメント作成時に空白挿入
+
 " Powerline系フォントを利用する
 set laststatus=2
 let g:airline_powerline_fonts = 1
