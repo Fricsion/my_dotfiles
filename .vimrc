@@ -20,6 +20,10 @@ Plugin 'vim-airline/vim-airline'
 
 Plugin 'vim-airline/vim-airline-themes'
 
+Plugin 'tomtom/tcomment_vim'
+
+Plugin 'nathanaelkane/vim-indent-guides'
+
 
 call vundle#end()
 filetype plugin indent on
@@ -53,6 +57,13 @@ set bg=dark
 set nowritebackup
 " バックアップは本体を保存したら消去
 
+"""""""""""""""""""
+" 自動的に閉じ括弧挿入
+imap { {}<LEFT>
+imap [ []<LEFT>
+imap ( ()<LEFT>
+""""""""""""""""""
+
 set list
 " 不可視文字を具現化
 set listchars=tab:»-,trail:-,nbsp:%,eol:↲
@@ -71,6 +82,9 @@ nmap <C-t> :NERDTreeToggle<CR>
 " NERDTree起動
 nmap <Space>r :QuickRun<CR>
 " PythonをQuickRun
+
+let g:indent_guides_enable_on_vim_startup = 1
+" Vim起動時にIndent Guideをオンに
 
 " Powerline系フォントを利用する
 set laststatus=2
