@@ -59,9 +59,9 @@ set nowritebackup
 
 """""""""""""""""""
 " 自動的に閉じ括弧挿入
-imap { {}<LEFT>
-imap [ []<LEFT>
-imap ( ()<LEFT>
+" imap { {}<LEFT>
+" imap [ []<LEFT>
+" imap ( ()<LEFT>
 """"""""""""""""""
 
 set list
