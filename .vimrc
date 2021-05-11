@@ -1,6 +1,8 @@
 
 set nocompatible
 filetype off
+set langmenu=en_US.UTF-8
+language C
 
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
@@ -9,21 +11,11 @@ call vundle#begin()
 " :PluginInstallを実行する　→ Done!と表示されれば問題なく完了
 
 Plugin 'VundleVim/Vundle.vim'
-
 Plugin 'scrooloose/nerdtree'
-
 Plugin 'Lokaltog/powerline'
-
-Plugin 'thinca/vim-quickrun'
-
-Plugin 'vim-airline/vim-airline'
-
-Plugin 'vim-airline/vim-airline-themes'
-
-Plugin 'tomtom/tcomment_vim'
-
-Plugin 'nathanaelkane/vim-indent-guides'
-
+Plugin 'tpope/vim-markdown'
+Plugin 'kannokanno/previm'
+Plugin 'tyru/open-browser.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -50,7 +42,7 @@ set shiftwidth=4
 " 自動インデントで生じさせる幅
 set noexpandtab
 " タブにはタブを
-colorscheme hybrid
+colorscheme hybrid 
 " カラースキーム設定
 set bg=dark
 " カラースキームのタイプ設定
@@ -70,6 +62,8 @@ set listchars=tab:»-,trail:-,nbsp:%,eol:↲
 " 不可視文字の具現化記号を設定
 set clipboard+=unnamed
 " クリップボードをmacOSと共有
+autocmd ColorScheme * highlight LineNr ctermfg=100
+" 行数の色だけを変更
 set foldcolumn=3
 set foldmethod=indent
 " 折りたたみ設定
@@ -82,63 +76,21 @@ nmap <C-t> :NERDTreeToggle<CR>
 " NERDTree起動
 nmap <Space>r :QuickRun<CR>
 " PythonをQuickRun
+map ,p <Plug>(operator-autopep8)
+" ,pafとキーバインドすれば自動整形
+
 
 let g:indent_guides_enable_on_vim_startup = 1
 " Vim起動時にIndent Guideをオンに
+" .mdを閲覧しやすく！
+""" markdown {{{
+   autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
+   autocmd BufRead,BufNewFile *.md  set filetype=markdown
+   " Need: kannokanno/previm
+   nnoremap <silent> <C-p> :PrevimOpen<CR> " Ctrl-pでプレビュー
+   " 自動で折りたたまないようにする
+   let g:vim_markdown_folding_disabled=1
+   let g:previm_enable_realtime = 1
+ " }}}
 
-" Powerline系フォントを利用する
-set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline#extensions#whitespace#mixed_indent_algo = 1
-let g:airline_theme = 'tomorrow'
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
 
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.maxlinenr = '㏑'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = '∄'
-let g:airline_symbols.whitespace = 'Ξ'
-
-" powerline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.maxlinenr = ''
-
-" QuickRun 実行結果を下に出す
-" let g:quickrun_config={'*': {'split': ''}}
-" set splitbelow
-
-" QuickRun 実行結果を右に出す
-let g:quickrun_config={'*': {'split': 'vertical'}}
-set splitright
-
-" augroup fileTypeIndent
-"     autocmd!
-"     autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
-" 	" Pythonコードならタブ入力時に空白四つ挿入
-"     autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
-" 	" Rubyコードならタブ入力時に空白二つ挿入
-" augroup END
